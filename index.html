@@ -133,26 +133,32 @@
     <section class="card">
       <h2>Aktuelles Release</h2>
       <div class="version">
-        <strong>1.3.3</strong>
-        <span>Windows 64-bit · ZIP · 131,9 MB</span>
+        <strong>1.3.4</strong>
+        <span>Windows 64-bit · ZIP · 2,90 GB (2 Teile)</span>
       </div>
       <p class="muted small" style="margin:0">
         Enthält das vollständige Programm. Profile, Konfiguration und Lizenz bleiben bei einem Update erhalten.
+        Beide Teile herunterladen und mit <code>copy /b</code> zusammenfügen; die Anleitung steht unten.
       </p>
       <div class="actions">
-        <a class="btn btn-primary" href="https://github.com/frosyyyyy/ai-aim-assist-updates/releases/download/v1.3.3/AI-Aim-Assist-1.3.3-win64.zip" download>ZIP herunterladen</a>
-        <a class="btn btn-secondary" href="SHA256.txt">SHA-256 ansehen</a>
+        <a class="btn btn-primary" href="https://github.com/frosyyyyy/ai-aim-assist-updates/releases/download/v1.3.4/AI-Aim-Assist-1.3.4-win64.zip.001" download>Teil 1 herunterladen</a>
+        <a class="btn btn-secondary" href="https://github.com/frosyyyyy/ai-aim-assist-updates/releases/download/v1.3.4/AI-Aim-Assist-1.3.4-win64.zip.002" download>Teil 2 herunterladen</a>
       </div>
       <div class="hash">
         <b>SHA-256</b>
-        DA7E06DE2D20571A163A2C589D7058A499AB72E1985FDB8393CDC4E8AB23AC34
+        799F58ED0D4A8FEB11874F5396DE92DAEEE5EE160982D3AAD49433E7C0251CB4
+      </div>
+      <div class="hash">
+        <b>Zusammenfügen (nur Erstinstallation)</b>
+        copy /b AI-Aim-Assist-1.3.4-win64.zip.001 + AI-Aim-Assist-1.3.4-win64.zip.002 AI-Aim-Assist-1.3.4-win64.zip
       </div>
     </section>
 
     <section class="card">
       <h2>In der App updaten</h2>
       <p class="muted small" style="margin:0">
-        Einmal die Manifest-URL speichern, danach reicht „Nach Update suchen“.
+        Die Manifest-URL ist in der App bereits eingetragen. Der Updater lädt beide
+        Teile automatisch und prüft sie vor der Installation.
       </p>
       <div class="url">
         <input id="manifestUrl" readonly aria-label="Update-Manifest-URL">
@@ -169,11 +175,11 @@
 
   <footer>
     <span class="status"><span class="dot"></span> HTTPS-Update-Kanal</span>
-    <span>Manifest: <code style="color:#c7d7ec">latest.json</code> · Version 1.3.3</span>
+    <span>Manifest: <code style="color:#c7d7ec">latest.json</code> · Version 1.3.4</span>
   </footer>
 </main>
 <script>
-  const manifest = new URL('latest.json', window.location.href).href;
+  const manifest = 'https://github.com/frosyyyyy/ai-aim-assist-updates/releases/latest/download/latest.json';
   const input = document.getElementById('manifestUrl');
   const button = document.getElementById('copyButton');
   input.value = manifest;
