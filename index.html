@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>AI Aim Assist Updates</title>
+<style>
+  :root {
+    --bg: #070b12;
+    --panel: #0e1623;
+    --panel-2: #121d2d;
+    --line: #223149;
+    --text: #eef5ff;
+    --muted: #93a5bf;
+    --accent: #58d6a6;
+    --accent-2: #3da9fc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 15% 0%, rgba(61,169,252,.16), transparent 32rem),
+      radial-gradient(circle at 90% 10%, rgba(88,214,166,.12), transparent 30rem),
+      var(--bg);
+  }
+  .wrap { width: min(1040px, calc(100% - 40px)); margin: 0 auto; padding: 72px 0 56px; }
+  .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  h1 { margin: 12px 0 14px; font-size: clamp(38px, 7vw, 72px); line-height: .98; letter-spacing: -.045em; }
+  h1 span { color: var(--muted); font-weight: 500; }
+  .lead { max-width: 700px; color: var(--muted); font-size: 18px; line-height: 1.6; margin: 0 0 32px; }
+  .grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+  .card {
+    background: linear-gradient(180deg, rgba(18,29,45,.96), rgba(14,22,35,.96));
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 24px 70px rgba(0,0,0,.28);
+  }
+  .card h2 { margin: 0 0 8px; font-size: 18px; letter-spacing: -.01em; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; line-height: 1.55; }
+  .version { display: flex; align-items: baseline; gap: 10px; margin: 18px 0 6px; }
+  .version strong { font-size: 46px; letter-spacing: -.04em; }
+  .version span { color: var(--muted); font-size: 14px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .btn {
+    appearance: none;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 650;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .15s ease, filter .15s ease, border-color .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+  .btn-primary { color: #04110d; background: var(--accent); }
+  .btn-secondary { color: var(--text); background: var(--panel-2); border-color: var(--line); }
+  .url {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+    margin-top: 12px;
+  }
+  .url input {
+    min-width: 0;
+    flex: 1;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #09111c;
+    color: var(--text);
+    padding: 12px 13px;
+    font: 12px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  }
+  .url button { flex: 0 0 auto; }
+  .steps { margin: 18px 0 0; padding: 0; list-style: none; counter-reset: step; }
+  .steps li { position: relative; counter-increment: step; padding: 0 0 16px 38px; color: var(--muted); line-height: 1.55; }
+  .steps li:last-child { padding-bottom: 0; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--accent);
+    background: #0a1320;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .steps b { color: var(--text); font-weight: 650; }
+  .hash {
+    margin-top: 18px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #09111c;
+    color: var(--muted);
+    font: 11px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace;
+    overflow-wrap: anywhere;
+  }
+  .hash b { display: block; margin-bottom: 4px; color: var(--text); font-family: "Segoe UI", system-ui, sans-serif; font-size: 12px; }
+  footer { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-top: 28px; color: var(--muted); font-size: 12px; }
+  .status { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); }
+  .dot { width: 7px; height: 7px; border-radius: 99px; background: var(--accent); box-shadow: 0 0 14px rgba(88,214,166,.75); }
+  @media (max-width: 760px) {
+    .wrap { padding-top: 44px; }
+    .grid { grid-template-columns: 1fr; }
+    .card { padding: 22px; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="eyebrow">AI Aim Assist / Release Channel</div>
+  <h1>Updates.<br><span>Sauber. Geprüft. Sicher.</span></h1>
+  <p class="lead">
+    Hier liegt das aktuelle Release-Paket und das Update-Manifest für die App.
+    Die App prüft SHA-256 und Paketgröße, bevor sie die Installation ersetzt.
+  </p>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Aktuelles Release</h2>
+      <div class="version">
+        <strong>1.3.3</strong>
+        <span>Windows 64-bit · ZIP · 131,9 MB</span>
+      </div>
+      <p class="muted small" style="margin:0">
+        Enthält das vollständige Programm. Profile, Konfiguration und Lizenz bleiben bei einem Update erhalten.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://github.com/frosyyyyy/ai-aim-assist-updates/releases/download/v1.3.3/AI-Aim-Assist-1.3.3-win64.zip" download>ZIP herunterladen</a>
+        <a class="btn btn-secondary" href="SHA256.txt">SHA-256 ansehen</a>
+      </div>
+      <div class="hash">
+        <b>SHA-256</b>
+        DA7E06DE2D20571A163A2C589D7058A499AB72E1985FDB8393CDC4E8AB23AC34
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>In der App updaten</h2>
+      <p class="muted small" style="margin:0">
+        Einmal die Manifest-URL speichern, danach reicht „Nach Update suchen“.
+      </p>
+      <div class="url">
+        <input id="manifestUrl" readonly aria-label="Update-Manifest-URL">
+        <button id="copyButton" class="btn btn-secondary" type="button">Kopieren</button>
+      </div>
+      <ol class="steps">
+        <li><b>Erweitert</b> öffnen und <b>System</b> wählen.</li>
+        <li>Die URL unter <b>UPDATES</b> einfügen und <b>Quelle speichern</b> klicken.</li>
+        <li><b>Nach Update suchen</b> und anschließend <b>Update installieren</b>.</li>
+        <li>Die App beendet sich, ersetzt die Dateien und startet neu.</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer>
+    <span class="status"><span class="dot"></span> HTTPS-Update-Kanal</span>
+    <span>Manifest: <code style="color:#c7d7ec">latest.json</code> · Version 1.3.3</span>
+  </footer>
+</main>
+<script>
+  const manifest = new URL('latest.json', window.location.href).href;
+  const input = document.getElementById('manifestUrl');
+  const button = document.getElementById('copyButton');
+  input.value = manifest;
+  button.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(manifest);
+      button.textContent = 'Kopiert';
+    } catch {
+      input.focus();
+      input.select();
+      document.execCommand('copy');
+      button.textContent = 'Kopiert';
+    }
+    setTimeout(() => { button.textContent = 'Kopieren'; }, 1800);
+  });
+</script>
+</body>
+</html>
