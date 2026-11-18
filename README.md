@@ -1,28 +1,28 @@
 # AI Aim Assist – Update Channel
 
-Öffentlicher HTTPS-Update-Kanal für **AI Aim Assist 1.3.4**.
+Öffentlicher HTTPS-Update-Kanal für **AI Aim Assist 1.3.5**.
 
 ## Download
 
 Das Release besteht aus zwei Teilen, weil GitHub einzelne Assets auf 2 GiB begrenzt:
 
-- `AI-Aim-Assist-1.3.4-win64.zip.001`
-- `AI-Aim-Assist-1.3.4-win64.zip.002`
+- `AI-Aim-Assist-1.3.5-win64.zip.001`
+- `AI-Aim-Assist-1.3.5-win64.zip.002`
 
 Beide Dateien in denselben Ordner herunterladen, dort `cmd.exe` öffnen und ausführen:
 
 ```bat
-copy /b AI-Aim-Assist-1.3.4-win64.zip.001 + AI-Aim-Assist-1.3.4-win64.zip.002 AI-Aim-Assist-1.3.4-win64.zip
+copy /b AI-Aim-Assist-1.3.5-win64.zip.001 + AI-Aim-Assist-1.3.5-win64.zip.002 AI-Aim-Assist-1.3.5-win64.zip
 ```
 
 Das entstandene ZIP entpacken und `start.bat` starten.
 
-**Größe:** `2.904.273.269` Bytes
+**Größe:** `2.954.086.250` Bytes
 
 **SHA-256:**
 
 ```text
-799F58ED0D4A8FEB11874F5396DE92DAEEE5EE160982D3AAD49433E7C0251CB4
+EE788C4AAB1CEEF0D470FC0CD1B1CC7C8B15C5329B38A3A1ED69113F739A1E42
 ```
 
 ## Automatische Updates
